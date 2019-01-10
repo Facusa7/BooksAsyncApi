@@ -31,11 +31,10 @@ namespace Books.Api
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             // register the DbContext on the container, getting the connection string from
-            // appSettings (note: use this during development; in a production environment,
+            // appSettings (note: use this during development; in a production environment, 
             // it's better to store the connection string in an environment variable)
             var connectionString = Configuration["ConnectionStrings:BooksDBConnectionString"];
             services.AddDbContext<BooksContext>(o => o.UseSqlServer(connectionString));
-
             services.AddScoped<IBooksRepository, BooksRepository>();
         }
 
